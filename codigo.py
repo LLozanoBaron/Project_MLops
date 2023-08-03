@@ -41,7 +41,7 @@ def get_juegos(year: int):
     df_filter = df[df['release_date'].dt.to_period('Y') == years]
 #Converted the column into a list,transform to string and contain it in the variable
     juegos_lanzados = df_filter['app_name'].astype(str).tolist()
-    juegos_dict = juegos_lanzados
+    juegos_dict = {juego for juego in juegos_lanzados}
     return {year: juegos_dict}
 
 #print(juegos(2014))
