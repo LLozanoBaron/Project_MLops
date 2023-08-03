@@ -20,7 +20,7 @@ df_anid = dff.explode('genres')
 
 #Para la primera funcion 
 
-def genero(year: int):
+def get_genero(year: int):
     df = df_anid[['release_date','genres']]
 #Convert the time to datetime object.Then it converts the datetime object to period object with a yearly frequency
     years = pd.to_datetime(year,format = '%Y').to_period('Y')
@@ -33,7 +33,7 @@ def genero(year: int):
 #print(genero(2014))
 
     
-def juegos(year: int):
+def get_juegos(year: int):
     df = dff[['release_date','app_name']]
 #Convert the time to datetime object.Then it converts the datetime object to period object with a yearly frequency
     years = pd.to_datetime(year,format = '%Y').to_period('Y')
@@ -46,18 +46,18 @@ def juegos(year: int):
 
 #print(juegos(2014))
 
-def specs(year: int):
+def get_specs(year: int):
     df = dff[['release_date','specs']]
     years = pd.to_datetime(year,format = '%Y').to_period('Y')
     df_filter = df[df['release_date'].dt.to_period('Y') == years]
-    df_filter = df_filter.explode('specs') #Unnest the colum specs in the dataframe
+    df_filter = df_filter.explode('specs')
     df_top = df_filter['specs'].value_counts()
     top_specs = df_top.head(5)
     return {year: top_specs.to_dict()}
 
 #print(specs(2014))
 
-def earlyaccess(year: int):
+def get_earlyaccess(year: int):
     df = dff[['release_date','early_access']]
     years = pd.to_datetime(year,format = '%Y').to_period('Y')
     df_filter = df[df['release_date'].dt.to_period('Y') == years]    
@@ -67,7 +67,7 @@ def earlyaccess(year: int):
 
 #print(earlyaccess(2014))
 
-def sentiment( year : int):
+def get_sentiment( year : int):
     dfs = dff[['sentiment','release_date']]
     #Use isin to created a boolean series that indicate the value of the column
     #The ~ operator is used to invert the boolean series. 
