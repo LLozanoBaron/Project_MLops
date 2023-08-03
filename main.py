@@ -1,4 +1,4 @@
-import codigo
+from codigo import genero,juegos,specs,earlyaccess,sentiment
 import pandas as pd
 from fastapi import FastAPI,HTTPException
 from fastapi.responses import JSONResponse
@@ -11,7 +11,7 @@ app.title = 'PROYECTO ML'
 @app.get("/obtener generos", tags=['games'])
 async def genero_top_5(year: int):
     try:
-        result = codigo.genero(year)
+        result = genero(year)
         json_compatible_item_data = jsonable_encoder(result)
         return JSONResponse(content=json_compatible_item_data)
     except Exception as e:
@@ -21,7 +21,7 @@ async def genero_top_5(year: int):
 @app.get("/games by year", tags=['games'])
 async def juegos(year: int):
     try:
-        result = codigo.juegos(year)
+        result = juegos(year)
         json_compatible_item_data = jsonable_encoder(result)
         return JSONResponse(content=json_compatible_item_data)
     except Exception as e:
@@ -30,7 +30,7 @@ async def juegos(year: int):
 @app.get("/specs by year", tags=['games'])
 async def specs(year: int):
     try:
-        result = codigo.specs(year)
+        result = specs(year)
         json_compatible_item_data = jsonable_encoder(result)
         return JSONResponse(content=json_compatible_item_data)
     except Exception as e:
@@ -39,7 +39,7 @@ async def specs(year: int):
 @app.get("/earlyacces by year", tags=['games'])
 async def earlyaccess(year: int):
     try:
-        result = codigo.earlyaccess(year)
+        result = earlyaccess(year)
         json_compatible_item_data = jsonable_encoder(result)
         return JSONResponse(content=json_compatible_item_data)
     except Exception as e:
@@ -48,7 +48,7 @@ async def earlyaccess(year: int):
 @app.get("/sentiment by year", tags=['games'])
 async def sentiment(year: int):
     try:
-        result = codigo.sentiment(year)
+        result = sentiment(year)
         json_compatible_item_data = jsonable_encoder(result)
         return JSONResponse(content=json_compatible_item_data)
     except Exception as e:
