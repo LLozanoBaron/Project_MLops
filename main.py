@@ -58,7 +58,7 @@ from fastapi import FastAPI, HTTPException, Query
 
 app = FastAPI()
 
-@app.get("/Model", tags=['games'])
+@app.get("/model", tags=['games'])
 async def model(
     year,
     early_access: int = Query(..., ge=0, le=1),
