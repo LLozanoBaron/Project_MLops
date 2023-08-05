@@ -93,14 +93,16 @@ def get_sentiment( year : int):
 
 import pickle
 
-def get_predict(year, early_access, sentiment,genre):
-    
+def get_predict(year, early_access, sentiment, genre):
     # Load the saved model from a file
     with open('model_and_rmse.pkl', 'rb') as file:
-        model = pickle.load(file)
+        data = pickle.load(file)
+    
+    # Unpack the tuple and extract the model
+    model, rmse_train, rmse_test = data
     
     # Create input data for prediction
-    X = [[year, early_access, sentiment,genre]]
+    X = [[year, early_access, sentiment, genre]]
     
     # Make prediction
     y_pred = model.predict(X)
