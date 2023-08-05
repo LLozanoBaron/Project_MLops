@@ -94,6 +94,7 @@ def get_sentiment( year : int):
 import pickle
 
 from pandas import to_numeric
+
 def get_predict(year, early_access, sentiment, genre):
     # Load the saved model from a file
     with open('model_and_rmse.pkl', 'rb') as file:
@@ -104,9 +105,9 @@ def get_predict(year, early_access, sentiment, genre):
     
     # Create a list of all possible genres
     all_genres = ['Indie','Action','Adventure','Casual','Simulation','Strategy','RPG','Early Access',
-                  'Free to Play','Sports','Massively Multiplayer','Racing','Design &amp; Illustration',
+                  'Free to Play','Sports','Massively Multiplayer','Racing','Design & Illustration',
                   'Education','Photo Editing','Software Training','Utilities','Video Production',
-                  'Web Publishing', 'Accounting', 'Animation &amp; Modeling', 'Audio Production']
+                  'Web Publishing', 'Accounting', 'Animation & Modeling', 'Audio Production']
     
     # Create a one-hot encoded representation of the input genre
     genre_encoded = [1 if g == genre else 0 for g in all_genres]
@@ -117,6 +118,9 @@ def get_predict(year, early_access, sentiment, genre):
     # Make prediction
     y_pred = model.predict(X)
     
-    return {'prediction': to_numeric(y_pred)}
+    # Return prediction as a scalar value
+    return {'predict price': round(to_numeric(y_pred[0]), 2), 'rmse_train': rmse_train, 'rmse_test': rmse_test}
 
-print(get_predict(2014,1,3,'Indie'))
+
+
+#print(get_predict(2014,1,3,'Indie'))
