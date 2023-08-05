@@ -68,9 +68,10 @@ async def model(
         raise HTTPException(status_code=400, detail="Early access must be either 0 or 1")
     
     try:
-        result = get_predict(year, early_access, sentiment)
+        result = get_predict(year, early_access, sentiment, genre)
         json_compatible_item_data = jsonable_encoder(result)
         return JSONResponse(content=json_compatible_item_data)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
 
