@@ -1,6 +1,6 @@
 from codigo import get_genero,get_juegos,get_specs,get_earlyaccess,get_sentiment,get_predict
 import pandas as pd
-from fastapi import FastAPI,HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 import ast
@@ -54,11 +54,7 @@ async def sentiment(year: int):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     
-from fastapi import FastAPI, HTTPException, Query
-
-app = FastAPI()
-
-@app.get("/model", tags=['games'])
+@app.get("/model/", tags=['games'])
 async def model(
     year,
     early_access: int = Query(..., ge=0, le=1),
