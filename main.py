@@ -56,7 +56,8 @@ async def sentiment(year: int):
     
 @app.get("/model/", tags=['games'])
 async def model(
-    year,
+    year, 
+    genre,
     early_access: int = Query(..., ge=0, le=1),
     sentiment: int = Query(..., ge=1, le=9)
 ):
