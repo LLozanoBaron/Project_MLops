@@ -90,7 +90,7 @@ def get_sentiment( year : int):
 
 #print(sentiment(2014))
 
-def metascore(year: int):
+def get_metascore(year: int):
     df = dff[['metascore','release_date','app_name']]
     # Filter the data to only include rows where the release date is in the specified year
     df_filtered = df[df['release_date'].dt.year == year]
