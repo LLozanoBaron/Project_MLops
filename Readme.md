@@ -26,5 +26,11 @@ Para este proyecto tenemos varios objetivos a cumplir en la API a desarrollar lo
 + Desplegar la API en render.com para que sea utilizada de forma libre.
 
 ## **Prueba de la API Games app and ML**
-El link de acceso a la API es el siguiente: https://games-app-and-ml.onrender.com/docs
+En el siguiente link se puede encontrar la API realizada en el proyecto: https://games-app-and-ml.onrender.com/docs
+
+En esta se podran observar las funicones realizadas y sus respectivos resultados, en las siguientes imagenes se podra observar no solo como es su aspecto sino algunos resultados:
+
+(Imagen 1: API)![API 1](https://github.com/LLozanoBaron/Proyecto_MLops/assets/125699712/4cdc7a2c-7344-4c05-bc0f-c9eaeb06f9c8)
+
+
 
