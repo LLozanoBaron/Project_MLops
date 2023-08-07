@@ -15,8 +15,14 @@ Para este proyecto tenemos varios objetivos a cumplir en la API a desarrollar lo
 
 + Crear unan función en la cual al ingresar un año devuelva un diccionario con la cantidad de juegos lanzados en un año con early access.
 
-+ Crear unan función en la cual según el año de lanzamiento, se devuelve una lista con la cantidad de registros que se encuentren categorizados con un análisis de sentimiento. 
++ Crear unan función en la cual según el año de lanzamiento, se devuelve un diccionario con la cantidad de registros que se encuentren categorizados con un análisis de sentimiento. 
 
-+ 
++ Crear unan función en la cual se devuelve un diccionario con el top 5 juegos según año con mayor metascore.
 
-+ Desplegar la API en render.com para que sea utilizada de forma libre
++ Realizar la limpieza de datos correspondiente para poder realizar un análisis exploratorio de datos y un modelo de machine learning acorde con los datos.
+
++ Crear una funcion para el modelo de predicción elegido, en la cual al ingresar los parametros elegidos devuelva el precio y el RSME. 
+
++ Desplegar la API en render.com para que sea utilizada de forma libre.
+
+## **OBJETIVOS**
