@@ -8,3 +8,11 @@ En este proyecto individual vamos a utilizar la base de datos de videojuegos de 
 Para este proyecto tenemos varios objetivos a cumplir en la API a desarrollar los cuales enemeraremos acontinuación:
 
 + Crear unan función en la cual al ingresar el año se dara como resultado los cinco(5) generos mas ofrecidos.
+
++ Crear unan función en la cual al ingresar un año devuelva un diccionario con los juegos lanzados en el año.
+
++ Crear unan función en la cual al ingresar un año devuelva un diccionario con los 5 specs que más se repiten en el mismo año en el orden correspondiente.
+
++ Crear unan función en la cual al ingresar un año devuelva un diccionario con la cantidad de juegos lanzados en un año con early access.
+
++ 

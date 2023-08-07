@@ -67,7 +67,7 @@ def get_specs(year: int):
 def get_earlyaccess(year: int):
     df = dff[['release_date','early_access']]
     years = pd.to_datetime(year,format = '%Y').to_period('Y')
-    df_filter = df[(df['release_date'].dt.to_period('Y') == years) & (dff['early_access'] == True)]    
+    df_filter = df[(df['release_date'].dt.to_period('Y') == years) & (df['early_access'] == True)]    
     num_early_access = len(df_filter) #Count the number of rows with True
     return {year: num_early_access}
 
