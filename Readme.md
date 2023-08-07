@@ -1,4 +1,4 @@
-<h1 align="center"> ***PROYECTO INDIVIDUAL MLOps*** </h1>
+<h1 align="center"> **PROYECTO INDIVIDUAL MLOps** </h1>
 
 ## **INTRODUCCIÓN**
 
