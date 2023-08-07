@@ -54,10 +54,8 @@ async def sentiment(year: int):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     
-GENRE_OPTIONS = ['Indie','Action','Adventure','Casual','Simulation','Strategy','RPG','Early Access',
-                 'Free to Play','Sports','Massively Multiplayer','Racing','Design &amp; Illustration',
-                 'Education','Photo Editing','Software Training','Utilities','Video Production','Web Publishing',
-                 'Accounting', 'Animation &amp; Modeling', 'Audio Production']
+GENRE_OPTIONS = ['Indie','Action','Adventure','Casual','Simulation',
+                  'Strategy','RPG','Early Access','Free to Play','Sports','Massively Multiplayer']
 
 @app.get("/model/", tags=['games'])
 async def model(

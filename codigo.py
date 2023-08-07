@@ -104,10 +104,8 @@ def get_predict(year, early_access, sentiment, genre):
     model, rmse_train, rmse_test = data
     
     # Create a list of all possible genres
-    all_genres = ['Indie','Action','Adventure','Casual','Simulation','Strategy','RPG','Early Access',
-                  'Free to Play','Sports','Massively Multiplayer','Racing','Design & Illustration',
-                  'Education','Photo Editing','Software Training','Utilities','Video Production',
-                  'Web Publishing', 'Accounting', 'Animation & Modeling', 'Audio Production']
+    all_genres = ['Indie','Action','Adventure','Casual','Simulation',
+                  'Strategy','RPG','Early Access','Free to Play','Sports','Massively Multiplayer']
     
     # Create a one-hot encoded representation of the input genre
     genre_encoded = [1 if g == genre else 0 for g in all_genres]
