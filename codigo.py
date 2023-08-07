@@ -95,6 +95,9 @@ def get_metascore(year: int):
     years = pd.to_datetime(year,format = '%Y').to_period('Y')
     df_filter = df[df['release_date'].dt.to_period('Y') == years] 
     
+    # Fill NaN values in the metascore column with the mean of the column
+    df_filter['metascore'].fillna(df_filter['metascore'].mean(), inplace=True)
+    
     # Sort rows by metascore in descending order
     df_sorted = df_filter.sort_values(by='metascore', ascending=False)
     
@@ -104,6 +107,7 @@ def get_metascore(year: int):
     # Convert the result to a dictionary
     result = top_games.set_index('app_name')['metascore'].to_dict()
     return {year: result}
+
 
 #print(metascore(2014))
 

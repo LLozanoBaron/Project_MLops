@@ -15,4 +15,8 @@ Para este proyecto tenemos varios objetivos a cumplir en la API a desarrollar lo
 
 + Crear unan función en la cual al ingresar un año devuelva un diccionario con la cantidad de juegos lanzados en un año con early access.
 
++ Crear unan función en la cual según el año de lanzamiento, se devuelve una lista con la cantidad de registros que se encuentren categorizados con un análisis de sentimiento. 
+
 + 
+
++ Desplegar la API en render.com para que sea utilizada de forma libre
