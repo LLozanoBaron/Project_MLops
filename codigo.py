@@ -91,6 +91,23 @@ def get_sentiment( year : int):
 
 #print(sentiment(2014))
 
+def get_metascore(year: int):
+    df = dff[['release_date','metascore','app_name']]
+    years = pd.to_datetime(year,format = '%Y').to_period('Y')
+    df_filter = df[df['release_date'].dt.to_period('Y') == years] 
+    
+    # Sort rows by metascore in descending order
+    df_sorted = df_filter.sort_values(by='metascore', ascending=False)
+    
+    # Get the names and metascores of the top 5 games
+    top_games = df_sorted[['app_name', 'metascore']].head(5)
+    
+    # Convert the result to a dictionary
+    result = top_games.set_index('app_name')['metascore'].to_dict()
+    return {year: result}
+
+#print(metascore(2014))
+
 import pickle
 
 from pandas import to_numeric

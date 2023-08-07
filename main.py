@@ -1,4 +1,4 @@
-from codigo import get_genero,get_juegos,get_specs,get_earlyaccess,get_sentiment,get_predict
+from codigo import get_genero,get_juegos,get_specs,get_earlyaccess,get_sentiment,get_predict,get_metascore
 import pandas as pd
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import JSONResponse
@@ -53,6 +53,16 @@ async def sentiment(year: int):
         return JSONResponse(content=json_compatible_item_data)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    
+@app.get("/metascore by year", tags=['games'])
+async def metascore(year: int):
+    try:
+        result = get_metascore(year)
+        json_compatible_item_data = jsonable_encoder(result)
+        return JSONResponse(content=json_compatible_item_data)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))    
+
     
 GENRE_OPTIONS = ['Indie','Action','Adventure','Casual','Simulation',
                   'Strategy','RPG','Early Access','Free to Play','Sports','Massively Multiplayer']
