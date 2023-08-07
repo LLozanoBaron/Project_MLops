@@ -90,28 +90,26 @@ def get_sentiment( year : int):
 
 #print(sentiment(2014))
 
-def get_metascore(year: int):
-    df = dff[['release_date','metascore','app_name']]
-    years = pd.to_datetime(year,format = '%Y').to_period('Y')
-    df_filter = df[df['release_date'].dt.to_period('Y') == years] 
+def metascore(year: int):
+    df = dff[['metascore','release_date','app_name']]
+    # Filter the data to only include rows where the release date is in the specified year
+    df_filtered = df[df['release_date'].dt.year == year]
     
-    # Replace invalid float values in the metascore column with the mean of the column
-    mean_metascore = df_filter['metascore'].mean()
-    df_filter['metascore'] = df_filter['metascore'].apply(lambda x: mean_metascore if x in [float('inf'), float('-inf'), float('nan')] else x)
-    
-    # Sort rows by metascore in descending order
-    df_sorted = df_filter.sort_values(by='metascore', ascending=False)
+    # Sort the rows by metascore in descending order
+    df_sorted = df_filtered.sort_values(by='metascore', ascending=False)
+    df_sorted['metascore'] = pd.to_numeric(df_sorted['metascore'], errors='coerce', downcast='integer')
+    df_sorted['metascore'] = df_sorted['metascore'].fillna(0)
     
     # Get the names and metascores of the top 5 games
     top_games = df_sorted[['app_name', 'metascore']].head(5)
     
     # Convert the result to a dictionary
-    result = top_games.set_index('app_name')['metascore'].to_dict()
+    result = top_games.set_index('app_name')['metascore'].apply(int).to_dict()
+    
     return {year: result}
 
-
-
 #print(metascore(2014))
+
 
 import pickle
 

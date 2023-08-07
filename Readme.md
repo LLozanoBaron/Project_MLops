@@ -25,4 +25,5 @@ Para este proyecto tenemos varios objetivos a cumplir en la API a desarrollar lo
 
 + Desplegar la API en render.com para que sea utilizada de forma libre.
 
-## **OBJETIVOS**
+## **Prueba de la API Games app and ML**
+
