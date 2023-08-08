@@ -46,7 +46,7 @@ En esta se podran observar las funicones realizadas y sus respectivos resultados
 
 + Prueba del modelo predictivo ![API 8](https://github.com/LLozanoBaron/Proyecto_MLops/assets/125699712/f42c1463-acfb-43db-85cb-d41a3bf1dd42)
 
-## **Caracteristicas de Games app and ML**
+## **Caracteristicas de la API**
 Aqui se encuentran algunas de las mejores caracteristicas de la API:
 
 + Su uso es sencillo, solamente se deben ingresar los años requeridos de forma numérica y se dara el resultado.
@@ -54,17 +54,38 @@ Aqui se encuentran algunas de las mejores caracteristicas de la API:
 + La veracidad del modelo fue rectificada en multiples ocasiones , resultando en un RMSE menor de 10.
 + Se tienen los generos más conocidos para un mejor resultado predictivo.
 
-## **Construcción de Games app and ML**
+## **Construcción de la API**
 
-Games app and ML fue construida con:
+la API fue construida con:
 + VSCode
 + Python 3.7.9
 + FastAPI 0.100.1
 + Uvicorn 0.22.0
 
-Los siguientes codigos son parte de la estructura de Games app and ML:
+Los siguientes codigos son parte de la estructura de la API:
 
+import ast 
+import pandas as pd
+import json
+from typing import Dict
 
+rows = []
+with open ('steam_games.json') as f: # f contains the data of the archive
+     for line in f.readlines():
+            rows.append(ast.literal_eval(line))
+df1 = pd.DataFrame(rows)
+
+# Change to NaT the data that is not in yyyy-mm-dd format
+df1['release_date'] = pd.to_datetime(df1['release_date'], format='%Y-%m-%d', errors='coerce')
+
+#Do a filter in release date to drop NaN
+dff = df1.dropna(subset= ['release_date'])
+
+#Change to datetime the release date
+dff['release_date'] = pd.to_datetime(dff['release_date'])
+
+#Unnest the colum genres in the dataframe
+df_anid = dff.explode('genres')
 
 ## **Recursos**
 https://github.com/soyHenry/PI_ML_OPS.git
