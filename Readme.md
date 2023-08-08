@@ -88,7 +88,6 @@ dff['release_date'] = pd.to_datetime(dff['release_date'])
 #Unnest the colum genres in the dataframe
 df_anid = dff.explode('genres')```
 
-+ Aqui se muestra el codigo de la función sentiment, en la cual se uso una mascara para determinar el sentimiento
 ```def get_sentiment( year : int):
     dfs = dff[['sentiment','release_date']]
     
@@ -102,81 +101,7 @@ df_anid = dff.explode('genres')```
     df_filter = dfs[dfs['release_date'].dt.to_period('Y') == years]    
     critics = df_filter['sentiment']
     num_critics = critics.value_counts() 
-    return {year: num_critics.to_dict()}```
-
-+En este codigo se puede obsevar como se construyo la API
-```from codigo import get_genero,get_juegos,get_specs,get_earlyaccess,get_sentiment,get_predict,get_metascore
-import pandas as pd
-from fastapi import FastAPI, HTTPException, Query
-from fastapi.responses import JSONResponse
-from fastapi.encoders import jsonable_encoder
-import ast
-
-app = FastAPI()
-app.title = 'PROYECTO ML'```
-
-+ En este codigo se puede observar la construcción de la función sentiment en la API
-``` @app.get("/sentiment by year", tags=['games'])
-async def sentiment(year: int):
-    try:
-        result = get_sentiment(year)
-        json_compatible_item_data = jsonable_encoder(result)
-        return JSONResponse(content=json_compatible_item_data)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))```
-
-+ En este codigo podemos observar el modelo machine learning utilizado
-``` rf2 = RandomForestRegressor(n_estimators = 200, max_features = 'sqrt', max_depth = 5, random_state = 18).fit(X_train, y_train)```
-
-+ El siguiente codigo nos muestra como se hallo el RMSE
-```#Calculate the RMSE
-import warnings
-warnings.filterwarnings("ignore", category=FutureWarning)
-
-from sklearn.metrics import mean_squared_error
-
-rmse_train2 = (mean_squared_error(y_train, y_train_pred, squared = False))
-rmse_test2 = (mean_squared_error(y_test, y_test_pred, squared = False))
-print(f'Raíz del error cuadrático medio en Train: {rmse_train}')
-print(f'Raíz del error cuadrático medio en Test: {rmse_test}')```
-
-+ El codigo nos muestra como se guardo el modelo
-
-```import pickle
-
-# Save the trained model and RMSE values to a file
-with open('model_and_rmse.pkl', 'wb') as file:
-    pickle.dump((rf2, rmse_train2, rmse_test2), file)```
-
-+ En el siguiente codigo podemos observar la función utilizada para el modelo predictivo
-```import pickle
-
-from pandas import to_numeric
-
-def get_predict(year, early_access, sentiment, genre):
-    # Load the saved model from a file
-    with open('model_and_rmse.pkl', 'rb') as file:
-        data = pickle.load(file)
-    
-    # Unpack the tuple and extract the model
-    model, rmse_train, rmse_test = data
-    
-    # Create a list of all possible genres
-    all_genres = ['Indie','Action','Adventure','Casual','Simulation',
-                  'Strategy','RPG','Early Access','Free to Play','Sports','Massively Multiplayer']
-    
-    # Create a one-hot encoded representation of the input genre
-    genre_encoded = [1 if g == genre else 0 for g in all_genres]
-    
-    # Create input data for prediction
-    X = [[year, early_access, sentiment] + genre_encoded]
-    
-    # Make prediction
-    y_pred = model.predict(X)
-    
-    # Return prediction as a scalar value
-    return {'predict price': round(to_numeric(y_pred[0]), 2), 'rmse_train': rmse_train, 'rmse_test': rmse_test}```
-
+    return {year: num_critics.to_dict()}``` python
 
 ## **Recursos**
 
