@@ -21,7 +21,7 @@ dff['release_date'] = pd.to_datetime(dff['release_date'])
 #Unnest the colum genres in the dataframe
 df_anid = dff.explode('genres')
 
-#Para la primera funcion 
+ 
 
 def get_genero(year: int):
     df = df_anid[['release_date','genres']]
@@ -114,7 +114,7 @@ def get_metascore(year: int):
 import pickle
 
 from pandas import to_numeric
-
+  
 def get_predict(year, early_access, sentiment, genre):
     # Load the saved model from a file
     with open('model_and_rmse.pkl', 'rb') as file:
