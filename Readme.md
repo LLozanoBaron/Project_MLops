@@ -65,7 +65,9 @@ la API fue construida con:
 Los siguientes codigos son parte de la estructura de la API:
 
 + Este codigo se uso para la lectura y limpieza de algunos datos antes de realizar las funciones
-```import ast 
+
+```
+import ast 
 import pandas as pd
 import json
 from typing import Dict
@@ -86,7 +88,8 @@ dff = df1.dropna(subset= ['release_date'])
 dff['release_date'] = pd.to_datetime(dff['release_date'])
 
 #Unnest the colum genres in the dataframe
-df_anid = dff.explode('genres')```python
+df_anid = dff.explode('genres')
+```python
 
 ## **Recursos**
 
