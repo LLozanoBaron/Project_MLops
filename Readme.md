@@ -168,7 +168,7 @@ print(f'Raíz del error cuadrático medio en Train: {rmse_train}')
 print(f'Raíz del error cuadrático medio en Test: {rmse_test}')
 ```
 
-+En el siguiente codigo se observa como se guardo el modelo predictivo
++ En el siguiente codigo se observa como se guardo el modelo predictivo
 
 ```python
 import pickle
