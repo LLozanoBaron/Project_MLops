@@ -64,7 +64,7 @@ la API fue construida con:
 
 Los siguientes codigos son parte de la estructura de la API:
 
-import ast 
+```import ast 
 import pandas as pd
 import json
 from typing import Dict
@@ -85,7 +85,7 @@ dff = df1.dropna(subset= ['release_date'])
 dff['release_date'] = pd.to_datetime(dff['release_date'])
 
 #Unnest the colum genres in the dataframe
-df_anid = dff.explode('genres')
+df_anid = dff.explode('genres') ```
 
 ## **Recursos**
 https://github.com/soyHenry/PI_ML_OPS.git
