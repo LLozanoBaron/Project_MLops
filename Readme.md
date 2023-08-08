@@ -212,7 +212,7 @@ def get_predict(year, early_access, sentiment, genre):
 ## **Recursos**
 
 + https://github.com/soyHenry/PI_ML_OPS.git
-+ En el siguiente link se puede encontrar un video en el cual se explica el funcionamiento y construcción de la API: 
++ En el siguiente link se puede encontrar un video en el cual se explica el funcionamiento y construcción de la API: https://youtu.be/_wFH1XkuKzk
 
 ## **AUTORA**
 
