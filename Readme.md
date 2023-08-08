@@ -25,7 +25,7 @@ Para este proyecto tenemos varios objetivos a cumplir en la API a desarrollar lo
 
 + Desplegar la API en render.com para que sea utilizada de forma libre.
 
-## **Prueba de la API Games app and ML**
+## **Prueba de la API Proyecto ML**
 En el siguiente link se puede encontrar la API realizada en el proyecto: https://games-app-and-ml.onrender.com/docs
 
 En esta se podran observar las funicones realizadas y sus respectivos resultados, en las siguientes imagenes se podra observar no solo como es su aspecto sino algunos resultados:
@@ -46,7 +46,7 @@ En esta se podran observar las funicones realizadas y sus respectivos resultados
 
 + Prueba del modelo predictivo ![API 8](https://github.com/LLozanoBaron/Proyecto_MLops/assets/125699712/f42c1463-acfb-43db-85cb-d41a3bf1dd42)
 
-## **Caracteristicas de la API**
+## **Caracteristicas de la API Proyecto ML***
 Aqui se encuentran algunas de las mejores caracteristicas de la API:
 
 + Su uso es sencillo, solamente se deben ingresar los años requeridos de forma numérica y se dara el resultado.
@@ -54,7 +54,7 @@ Aqui se encuentran algunas de las mejores caracteristicas de la API:
 + La veracidad del modelo fue rectificada en multiples ocasiones , resultando en un RMSE menor de 10.
 + Se tienen los generos más conocidos para un mejor resultado predictivo.
 
-## **Construcción de la API**
+## **Construcción de la API Proyecto ML***
 
 la API fue construida con:
 + VSCode
@@ -64,6 +64,7 @@ la API fue construida con:
 
 Los siguientes codigos son parte de la estructura de la API:
 
++ Este codigo se uso para la lectura y limpieza de algunos datos antes de realizar las funciones
 ```import ast 
 import pandas as pd
 import json
@@ -87,9 +88,108 @@ dff['release_date'] = pd.to_datetime(dff['release_date'])
 #Unnest the colum genres in the dataframe
 df_anid = dff.explode('genres') ```
 
-## **Recursos**
-https://github.com/soyHenry/PI_ML_OPS.git
++ Aqui se muestra el codigo de la función sentiment, en la cual se uso una mascara para determinar el sentimiento
+```def get_sentiment( year : int):
+    dfs = dff[['sentiment','release_date']]
+    
+    #Use isin to created a boolean series that indicate the value of the column
+    #The ~ operator is used to invert the boolean series. 
+    mask = ~dfs['sentiment'].isin(['Overwhelmingly Positive','Mostly Positive','Very Positive','Positive', 'Mixed', 'Negative','Mostly Negative','Very Negative','Overwhelmingly Negative'])
+    
+    #Select the rows where the mask is True and set that values in the column for None
+    dfs.loc[mask, 'sentiment'] = 'None'
+    years = pd.to_datetime(year,format = '%Y').to_period('Y')
+    df_filter = dfs[dfs['release_date'].dt.to_period('Y') == years]    
+    critics = df_filter['sentiment']
+    num_critics = critics.value_counts() 
+    return {year: num_critics.to_dict()} ```
 
++En este codigo se puede obsevar como se construyo la API
+```from codigo import get_genero,get_juegos,get_specs,get_earlyaccess,get_sentiment,get_predict,get_metascore
+import pandas as pd
+from fastapi import FastAPI, HTTPException, Query
+from fastapi.responses import JSONResponse
+from fastapi.encoders import jsonable_encoder
+import ast
+
+app = FastAPI()
+app.title = 'PROYECTO ML' ```
+
++ En este codigo se puede observar la construcción de la función sentiment en la API
+``` @app.get("/sentiment by year", tags=['games'])
+async def sentiment(year: int):
+    try:
+        result = get_sentiment(year)
+        json_compatible_item_data = jsonable_encoder(result)
+        return JSONResponse(content=json_compatible_item_data)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))```
+
++ En este codigo podemos observar el modelo machine learning utilizado
+``` rf2 = RandomForestRegressor(n_estimators = 200, max_features = 'sqrt', max_depth = 5, random_state = 18).fit(X_train, y_train)```
+
++ El siguiente codigo nos muestra como se hallo el RMSE
+```#Calculate the RMSE
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+
+from sklearn.metrics import mean_squared_error
+
+rmse_train2 = (mean_squared_error(y_train, y_train_pred, squared = False))
+rmse_test2 = (mean_squared_error(y_test, y_test_pred, squared = False))
+print(f'Raíz del error cuadrático medio en Train: {rmse_train}')
+print(f'Raíz del error cuadrático medio en Test: {rmse_test}') ```
+
++ El codigo nos muestra como se guardo el modelo
+
+```import pickle
+
+# Save the trained model and RMSE values to a file
+with open('model_and_rmse.pkl', 'wb') as file:
+    pickle.dump((rf2, rmse_train2, rmse_test2), file) ```
+
++ En el siguiente codigo podemos observar la función utilizada para el modelo predictivo
+```import pickle
+
+from pandas import to_numeric
+
+def get_predict(year, early_access, sentiment, genre):
+    # Load the saved model from a file
+    with open('model_and_rmse.pkl', 'rb') as file:
+        data = pickle.load(file)
+    
+    # Unpack the tuple and extract the model
+    model, rmse_train, rmse_test = data
+    
+    # Create a list of all possible genres
+    all_genres = ['Indie','Action','Adventure','Casual','Simulation',
+                  'Strategy','RPG','Early Access','Free to Play','Sports','Massively Multiplayer']
+    
+    # Create a one-hot encoded representation of the input genre
+    genre_encoded = [1 if g == genre else 0 for g in all_genres]
+    
+    # Create input data for prediction
+    X = [[year, early_access, sentiment] + genre_encoded]
+    
+    # Make prediction
+    y_pred = model.predict(X)
+    
+    # Return prediction as a scalar value
+    return {'predict price': round(to_numeric(y_pred[0]), 2), 'rmse_train': rmse_train, 'rmse_test': rmse_test} ```
+
+
+## **Recursos**
+
++ https://github.com/soyHenry/PI_ML_OPS.git
++ En el siguiente link se puede encontrar un video en el cual se explica el funcionamiento y construcción de la API: 
+
+## **AUTORA**
+
+Laura Viviana Lozano Baron
+
+## **Licencia**
+
+This project is licensed under the MIT License
 
 
 
