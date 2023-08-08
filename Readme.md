@@ -26,7 +26,7 @@ Para este proyecto tenemos varios objetivos a cumplir en la API a desarrollar lo
 + Desplegar la API en render.com para que sea utilizada de forma libre.
 
 ## **Prueba de la API Proyecto ML**
-En el siguiente link se puede encontrar la API realizada en el proyecto: https://games-app-and-ml.onrender.com/docs
+En el siguiente link se puede encontrar la API realizada en el proyecto: [https://games-app-and-ml.onrender.com/docs](https://games-app-and-ml.onrender.com)
 
 En esta se podran observar las funicones realizadas y sus respectivos resultados, en las siguientes imagenes se podra observar no solo como es su aspecto sino algunos resultados:
 
