@@ -86,22 +86,7 @@ dff = df1.dropna(subset= ['release_date'])
 dff['release_date'] = pd.to_datetime(dff['release_date'])
 
 #Unnest the colum genres in the dataframe
-df_anid = dff.explode('genres')```
-
-```def get_sentiment( year : int):
-    dfs = dff[['sentiment','release_date']]
-    
-    #Use isin to created a boolean series that indicate the value of the column
-    #The ~ operator is used to invert the boolean series. 
-    mask = ~dfs['sentiment'].isin(['Overwhelmingly Positive','Mostly Positive','Very Positive','Positive', 'Mixed', 'Negative','Mostly Negative','Very Negative','Overwhelmingly Negative'])
-    
-    #Select the rows where the mask is True and set that values in the column for None
-    dfs.loc[mask, 'sentiment'] = 'None'
-    years = pd.to_datetime(year,format = '%Y').to_period('Y')
-    df_filter = dfs[dfs['release_date'].dt.to_period('Y') == years]    
-    critics = df_filter['sentiment']
-    num_critics = critics.value_counts() 
-    return {year: num_critics.to_dict()}``` python
+df_anid = dff.explode('genres')```python
 
 ## **Recursos**
 
