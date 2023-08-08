@@ -66,7 +66,7 @@ Los siguientes codigos son parte de la estructura de la API:
 
 + Este codigo se uso para la lectura y limpieza de algunos datos antes de realizar las funciones
 
-```
+``` python
 import ast 
 import pandas as pd
 import json
@@ -89,7 +89,7 @@ dff['release_date'] = pd.to_datetime(dff['release_date'])
 
 #Unnest the colum genres in the dataframe
 df_anid = dff.explode('genres')
-```python
+```
 
 ## **Recursos**
 
