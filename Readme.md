@@ -86,7 +86,7 @@ dff = df1.dropna(subset= ['release_date'])
 dff['release_date'] = pd.to_datetime(dff['release_date'])
 
 #Unnest the colum genres in the dataframe
-df_anid = dff.explode('genres') ```
+df_anid = dff.explode('genres')```
 
 + Aqui se muestra el codigo de la función sentiment, en la cual se uso una mascara para determinar el sentimiento
 ```def get_sentiment( year : int):
@@ -102,7 +102,7 @@ df_anid = dff.explode('genres') ```
     df_filter = dfs[dfs['release_date'].dt.to_period('Y') == years]    
     critics = df_filter['sentiment']
     num_critics = critics.value_counts() 
-    return {year: num_critics.to_dict()} ```
+    return {year: num_critics.to_dict()}```
 
 +En este codigo se puede obsevar como se construyo la API
 ```from codigo import get_genero,get_juegos,get_specs,get_earlyaccess,get_sentiment,get_predict,get_metascore
@@ -113,7 +113,7 @@ from fastapi.encoders import jsonable_encoder
 import ast
 
 app = FastAPI()
-app.title = 'PROYECTO ML' ```
+app.title = 'PROYECTO ML'```
 
 + En este codigo se puede observar la construcción de la función sentiment en la API
 ``` @app.get("/sentiment by year", tags=['games'])
@@ -138,7 +138,7 @@ from sklearn.metrics import mean_squared_error
 rmse_train2 = (mean_squared_error(y_train, y_train_pred, squared = False))
 rmse_test2 = (mean_squared_error(y_test, y_test_pred, squared = False))
 print(f'Raíz del error cuadrático medio en Train: {rmse_train}')
-print(f'Raíz del error cuadrático medio en Test: {rmse_test}') ```
+print(f'Raíz del error cuadrático medio en Test: {rmse_test}')```
 
 + El codigo nos muestra como se guardo el modelo
 
@@ -146,7 +146,7 @@ print(f'Raíz del error cuadrático medio en Test: {rmse_test}') ```
 
 # Save the trained model and RMSE values to a file
 with open('model_and_rmse.pkl', 'wb') as file:
-    pickle.dump((rf2, rmse_train2, rmse_test2), file) ```
+    pickle.dump((rf2, rmse_train2, rmse_test2), file)```
 
 + En el siguiente codigo podemos observar la función utilizada para el modelo predictivo
 ```import pickle
@@ -175,7 +175,7 @@ def get_predict(year, early_access, sentiment, genre):
     y_pred = model.predict(X)
     
     # Return prediction as a scalar value
-    return {'predict price': round(to_numeric(y_pred[0]), 2), 'rmse_train': rmse_train, 'rmse_test': rmse_test} ```
+    return {'predict price': round(to_numeric(y_pred[0]), 2), 'rmse_train': rmse_train, 'rmse_test': rmse_test}```
 
 
 ## **Recursos**
