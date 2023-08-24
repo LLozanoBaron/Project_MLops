@@ -1,70 +1,70 @@
-<h1 align="center"> PROYECTO INDIVIDUAL MLOps </h1>
+<h1 align="center"> PROJECT MLOps </h1>
 
-## **INTRODUCCIÓN**
+## **INTRODUCTION**
 
-En este proyecto individual vamos a utilizar la base de datos de videojuegos de Steam, en esta desarrollaremos varias consultas, asi como un modelo Machine Learning, las consultas y el modelo seran entregadas en una API desarrollada en el framework FastAPI.
+In this individual project, we will use the Steam video game database. We will develop several queries and a Machine Learning model. The queries and the model will be delivered in an API developed in the FastAPI framework.
 
-## **OBJETIVOS**
-Para este proyecto tenemos varios objetivos a cumplir en la API a desarrollar los cuales enemeraremos acontinuación:
+## **OBJECTIVES**
+For this project, we have several objectives to achieve in the API to be developed, which we will enumerate below:
 
-+ Crear unan función en la cual al ingresar el año se dara como resultado los cinco(5) generos mas ofrecidos.
++ Create a function in which, when entering the year, the result will be the five (5) most offered genres. 
 
-+ Crear unan función en la cual al ingresar un año devuelva un diccionario con los juegos lanzados en el año.
++  Create a function in which, when entering the year, the result will be a dictionary with all the games launched in that year.
 
-+ Crear unan función en la cual al ingresar un año devuelva un diccionario con los 5 specs que más se repiten en el mismo año en el orden correspondiente.
++ Create a function in which, when entering a year, it returns a dictionary with the five (5) specs that are most repeated in the same year in the corresponding order.
 
-+ Crear unan función en la cual al ingresar un año devuelva un diccionario con la cantidad de juegos lanzados en un año con early access.
++ Create a function in which, when entering a year, it returns a dictionary with the number of games launched in a year with early access.
 
-+ Crear unan función en la cual según el año de lanzamiento, se devuelve un diccionario con la cantidad de registros que se encuentren categorizados con un análisis de sentimiento. 
++ Create a function in which, based on the release year, it returns a dictionary with the number of records that are categorized with a sentiment analysis. 
 
-+ Crear unan función en la cual se devuelve un diccionario con el top 5 juegos según año con mayor metascore.
++ Create a function that returns a dictionary with the top 5 games by year with the highest metascore.
 
-+ Realizar la limpieza de datos correspondiente para poder realizar un análisis exploratorio de datos y un modelo de machine learning acorde con los datos.
++ Perform the corresponding data cleaning to be able to carry out an exploratory data analysis and a machine learning model in accordance with the data.
 
-+ Crear una funcion para el modelo de predicción elegido, en la cual al ingresar los parametros elegidos devuelva el precio y el RSME. 
++ Create a function for the chosen prediction model, in which, when entering the selected parameters, it returns the price and the RSME.
 
-+ Desplegar la API en render.com para que sea utilizada de forma libre.
++ Deploy the API on render.com so that it can be used freely.
 
-## **Prueba de la API Proyecto ML**
-En el siguiente link se puede encontrar la API realizada en el proyecto: https://games-app-and-ml.onrender.com
+## **API TEST FOR ML PROJECT**
+In the following link, you can find the API created in the project: https://games-app-and-ml.onrender.com/docs
 
-En esta se podran observar las funicones realizadas y sus respectivos resultados, en las siguientes imagenes se podra observar no solo como es su aspecto sino algunos resultados:
+In this, you will be able to see the functions performed and their respective results. In the following images, you will be able to see not only what they look like but also some results.
 
-+ Primera vista de la API ![API 1](https://github.com/LLozanoBaron/Proyecto_MLops/assets/125699712/4cdc7a2c-7344-4c05-bc0f-c9eaeb06f9c8)
++ First view of the API ![API 1](https://github.com/LLozanoBaron/Proyecto_MLops/assets/125699712/4cdc7a2c-7344-4c05-bc0f-c9eaeb06f9c8)
 
-+ Prueba de la función generos ![API 2](https://github.com/LLozanoBaron/Proyecto_MLops/assets/125699712/7868da8b-e671-4017-969c-6a49bf1e6c81)
++ Test of the genero function ![API 2](https://github.com/LLozanoBaron/Proyecto_MLops/assets/125699712/7868da8b-e671-4017-969c-6a49bf1e6c81)
 
-+ Prueba de la función juegos ![API 3](https://github.com/LLozanoBaron/Proyecto_MLops/assets/125699712/a7425cf8-218d-4ac5-a714-cd9708c1ceac)
++ Test of the juegos function ![API 3](https://github.com/LLozanoBaron/Proyecto_MLops/assets/125699712/a7425cf8-218d-4ac5-a714-cd9708c1ceac)
 
-+ Prueba de la función specs ![API 4](https://github.com/LLozanoBaron/Proyecto_MLops/assets/125699712/1711d806-af32-42f9-a876-2a47a69e0ac6)
++ Test of the specs function ![API 4](https://github.com/LLozanoBaron/Proyecto_MLops/assets/125699712/1711d806-af32-42f9-a876-2a47a69e0ac6)
 
-+ Prueba de la función earlyacces ![API 5](https://github.com/LLozanoBaron/Proyecto_MLops/assets/125699712/845af2ba-70f4-42b6-a638-ef184bfcf374)
++ Test of the earlyacces function ![API 5](https://github.com/LLozanoBaron/Proyecto_MLops/assets/125699712/845af2ba-70f4-42b6-a638-ef184bfcf374)
 
-+ Prueba de la función sentiment ![API 6](https://github.com/LLozanoBaron/Proyecto_MLops/assets/125699712/ba1a250f-8167-4979-8324-b508748f6db7)
++ Test of the sentiment function ![API 6](https://github.com/LLozanoBaron/Proyecto_MLops/assets/125699712/ba1a250f-8167-4979-8324-b508748f6db7)
 
-+ Prueba de la función metascore ![API 7](https://github.com/LLozanoBaron/Proyecto_MLops/assets/125699712/ac2bb0d1-8441-40ae-b8c4-f854b620b39a)
++ Test of the metascore function ![API 7](https://github.com/LLozanoBaron/Proyecto_MLops/assets/125699712/ac2bb0d1-8441-40ae-b8c4-f854b620b39a)
 
-+ Prueba del modelo predictivo ![API 8](https://github.com/LLozanoBaron/Proyecto_MLops/assets/125699712/f42c1463-acfb-43db-85cb-d41a3bf1dd42)
++ Test of the predictive model ![API 8](https://github.com/LLozanoBaron/Proyecto_MLops/assets/125699712/f42c1463-acfb-43db-85cb-d41a3bf1dd42)
 
-## **Caracteristicas de la API Proyecto ML***
-Aqui se encuentran algunas de las mejores caracteristicas de la API:
+## **FEATURES OF THE ML PROJECT API***
+Here are some of the best features of the API:
 
-+ Su uso es sencillo, solamente se deben ingresar los años requeridos de forma numérica y se dara el resultado.
-+ El modelo tiene parametros sencillos de entender y rapidos de escribir.
-+ La veracidad del modelo fue rectificada en multiples ocasiones , resultando en un RMSE menor de 10.
-+ Se tienen los generos más conocidos para un mejor resultado predictivo.
++ Its use is simple, you only need to enter a year numerically and the result will be given.
++ The model has parameters that are easy to understand and quick to write.
++ The accuracy of the model was verified on multiple occasions, resulting in an RMSE of less than 10.
++ The most well-known genres are available for a better predictive result.
 
-## **Construcción de la API Proyecto ML***
+## **CONSTRUCTION OF THE ML PROJECT API***
 
-la API fue construida con:
+The API was built with:
 + VSCode
 + Python 3.7.9
 + FastAPI 0.100.1
 + Uvicorn 0.22.0
 
-Los siguientes codigos son parte de la estructura de la API:
+The following codes are part of the structure of the API:
 
-+ Este codigo se uso para la lectura y limpieza de algunos datos antes de realizar las funciones
++ This code was used for reading and cleaning some data before performing the functions.
 
 ``` python
 import ast 
@@ -91,7 +91,7 @@ dff['release_date'] = pd.to_datetime(dff['release_date'])
 df_anid = dff.explode('genres')
 ```
 
-+ Con este codigo se realizo la importación de la funciones y la contrucción de la API y sus funciones en main.py
++ With this code, the import of the functions and the construction of the API and its functions in main.py was carried out.
 
 ``` python
 from codigo import get_genero,get_juegos,get_specs,get_earlyaccess,get_sentiment,get_predict,get_metascore
@@ -114,7 +114,7 @@ async def genero_top_5(year: int):
         raise HTTPException(status_code=500, detail=str(e))
 ```
 
-+ Se muestra en el siguiente codigo como se contruyo la función get_genres en codigo.py
++ The following code shows how the get_genres function was built in codigo.py
 
 ``` python
 def get_genero(year: int):
@@ -130,7 +130,7 @@ def get_genero(year: int):
     return {year: top_genres.to_dict()}
 ```
 
-+ En el siguiente codigo se muestra el modelo Random Forest Regression elegido 
++ The following code shows the chosen Random Forest Regression model
 
 ``` python
 #Use the genres we selected had more frequency 
@@ -150,7 +150,7 @@ print(X_train.shape, y_train.shape, X_test.shape, y_test.shape)
 rf2 = RandomForestRegressor(n_estimators = 200, max_features = 'sqrt', max_depth = 5, random_state = 18).fit(X_train, y_train)
 ```
 
-+ Se puede observar en el siguiente codigo el calculo del RMSE
++ In the following code, the calculation of the RMSE can be observed.
 
 ``` python
 y_train_pred = rf.predict(X_train)
@@ -168,7 +168,7 @@ print(f'Raíz del error cuadrático medio en Train: {rmse_train}')
 print(f'Raíz del error cuadrático medio en Test: {rmse_test}')
 ```
 
-+ En el siguiente codigo se observa como se guardo el modelo predictivo
++ In the following code, it can be seen how the predictive model was saved.
 
 ```python
 import pickle
@@ -178,7 +178,7 @@ with open('model_and_rmse.pkl', 'wb') as file:
     pickle.dump((rf2, rmse_train2, rmse_test2), file)
 ```
 
-+ En esta seccion podemos observar la función get_predict
++ In this section, we can observe the get_predict function.
 
 ```python
 mport pickle
@@ -209,16 +209,16 @@ def get_predict(year, early_access, sentiment, genre):
     # Return prediction as a scalar value
     return {'predict price': round(to_numeric(y_pred[0]), 2), 'rmse_train': rmse_train, 'rmse_test': rmse_test}
 ```
-## **Recursos**
+## **RESOURCES**
 
 + https://github.com/soyHenry/PI_ML_OPS.git
-+ En el siguiente link se puede encontrar un video en el cual se explica el funcionamiento y construcción de la API:https://youtu.be/_wFH1XkuKzk 
++ In the following link, you can find a video in which the operation and construction of the API is explained:https://youtu.be/_wFH1XkuKzk 
 
-## **AUTORA**
+## **AUTHOR**
 
 Laura Viviana Lozano Baron
 
-## **Licencia**
+## **LICENSE**
 
 This project is licensed under the MIT License
 
